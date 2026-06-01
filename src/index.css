@@ -1,0 +1,141 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   CHASARA HOME & COFFEE — Design Tokens
+   Aesthetic: warm-refined editorial hospitality.
+   Palette family: "Forest" — deep green + bone + gold/coffee accents.
+   ============================================================ */
+@theme {
+  /* Brand colors */
+  --color-forest-900: #1f2b20;
+  --color-forest-800: #2c3e2d; /* primary — Chasara Home */
+  --color-forest-700: #3a5139;
+  --color-forest-600: #4d6a4b;
+
+  --color-gold-500: #c8a96e; /* accent — premium elements */
+  --color-gold-400: #d6bd8a;
+  --color-gold-300: #e4d2ad;
+
+  --color-coffee-900: #4a2c14;
+  --color-coffee-800: #5a3519;
+  --color-coffee-700: #6b3f1f; /* Chasara Coffee */
+  --color-coffee-600: #845430;
+
+  --color-cream-50: #faf8f5; /* warm off-white background */
+  --color-cream-100: #f3eee6;
+  --color-cream-200: #e9e1d3;
+
+  --color-ink: #1a1a1a; /* primary text */
+  --color-ink-soft: #4a463f; /* secondary text */
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Easing tokens */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Base ---------- */
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-cream-50);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle paper texture / atmosphere on the page background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(200, 169, 110, 0.06), transparent 42%),
+    radial-gradient(circle at 88% 8%, rgba(44, 62, 45, 0.05), transparent 38%);
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s var(--ease-out-soft),
+    transform 0.7s var(--ease-out-soft);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Hero entrance (staggered rise on load) ---------- */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 0.9s var(--ease-out-soft) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ---------- Focus visibility (a11y) ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Thin gold scrollbar accent on supporting browsers */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-color: var(--color-gold-400) transparent;
+    scrollbar-width: thin;
+  }
+}
