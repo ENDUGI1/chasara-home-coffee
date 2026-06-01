@@ -25,12 +25,14 @@ create table if not exists chasara_bookings (
 -- Aktifkan Row Level Security.
 alter table chasara_bookings enable row level security;
 
--- Izinkan publik (anon key dari website) HANYA menambah data (insert),
+-- Izinkan publik (key publik dari website) HANYA menambah data (insert),
 -- bukan membaca. Cocok untuk form reservasi.
+-- Catatan: pakai "to public" agar berlaku untuk anon key MAUPUN publishable key
+-- (sb_publishable_...) format baru Supabase.
 drop policy if exists "Allow public insert from booking form" on chasara_bookings;
 create policy "Allow public insert from booking form"
   on chasara_bookings for insert
-  to anon
+  to public
   with check (true);
 
 -- Untuk melihat daftar booking, gunakan Supabase Dashboard (Table Editor),

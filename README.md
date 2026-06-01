@@ -64,7 +64,7 @@ Untuk juga menyimpan booking ke database:
 
    create policy "Allow public insert from booking form"
      on chasara_bookings for insert
-     to anon
+     to public
      with check (true);
    ```
 
