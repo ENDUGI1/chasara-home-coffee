@@ -1,38 +1,55 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   CHASARA HOME & COFFEE — Design Tokens
-   Aesthetic: warm-refined editorial hospitality.
-   Palette family: "Forest" — deep green + bone + gold/coffee accents.
+   CHASARA HOME & COFFEE — Design Tokens (brand resmi)
+   Diambil dari logo & poster Chasara: coral + sage + teal + krem.
+   Aesthetic: warm-boutique hospitality, hangat & ramah.
    ============================================================ */
 @theme {
-  /* Brand colors */
-  --color-forest-900: #1f2b20;
-  --color-forest-800: #2c3e2d; /* primary — Chasara Home */
-  --color-forest-700: #3a5139;
-  --color-forest-600: #4d6a4b;
+  /* Sand / cream — background hangat & lembut */
+  --color-cream-50: #faf4ea;
+  --color-cream-100: #f2e7d6;
+  --color-cream-200: #e6d6bf;
 
-  --color-gold-500: #c8a96e; /* accent — premium elements */
-  --color-gold-400: #d6bd8a;
-  --color-gold-300: #e4d2ad;
+  /* Terracotta — aksen utama & CTA (lebih matang dari salmon) */
+  --color-coral-50: #f9efe8;
+  --color-coral-100: #f0dac9;
+  --color-coral-200: #e2b59c;
+  --color-coral-300: #d28f6e;
+  --color-coral-400: #c4724e;
+  --color-coral-500: #b85e3c;
+  --color-coral-600: #9c4c2f;
+  --color-coral-700: #7c3b25;
 
-  --color-coffee-900: #4a2c14;
-  --color-coffee-800: #5a3519;
-  --color-coffee-700: #6b3f1f; /* Chasara Coffee */
-  --color-coffee-600: #845430;
+  /* Sage — hijau lembut sekunder */
+  --color-sage-50: #eef2ed;
+  --color-sage-100: #dde7dc;
+  --color-sage-300: #aec5b3;
+  --color-sage-500: #84a08a;
+  --color-sage-600: #67836d;
+  --color-sage-700: #506757;
 
-  --color-cream-50: #faf8f5; /* warm off-white background */
-  --color-cream-100: #f3eee6;
-  --color-cream-200: #e9e1d3;
+  /* Teal — warna logo Chasara (atap), diperdalam */
+  --color-teal-400: #4f96a1;
+  --color-teal-500: #3b818d;
+  --color-teal-600: #316b76;
+  --color-teal-700: #29565f;
+  --color-teal-800: #21454d;
+  --color-teal-900: #173238;
 
-  --color-ink: #1a1a1a; /* primary text */
-  --color-ink-soft: #4a463f; /* secondary text */
+  /* Charcoal — section gelap (echo papan menu coffee) */
+  --color-charcoal-800: #292621;
+  --color-charcoal-900: #1d1a16;
 
-  /* Typography */
-  --font-display: 'Playfair Display', Georgia, serif;
+  /* Teks */
+  --color-ink: #2a2521;
+  --color-ink-soft: #61584d;
+
+  /* Tipografi */
+  --font-display: 'Fraunces', 'Playfair Display', Georgia, serif;
   --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-script: 'Caveat', cursive;
 
-  /* Easing tokens */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -54,16 +71,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-optical-sizing: auto;
+  }
 }
 
-/* Subtle paper texture / atmosphere on the page background */
+/* Atmosfer halus pada background (coral + sage tints) */
 body::before {
   content: '';
   position: fixed;
@@ -71,8 +91,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(200, 169, 110, 0.06), transparent 42%),
-    radial-gradient(circle at 88% 8%, rgba(44, 62, 45, 0.05), transparent 38%);
+    radial-gradient(circle at 12% 16%, rgba(217, 113, 74, 0.06), transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(138, 168, 151, 0.07), transparent 40%);
 }
 
 /* ---------- Scroll reveal ---------- */
@@ -90,18 +110,7 @@ body::before {
   transform: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
-/* ---------- Hero entrance (staggered rise on load) ---------- */
+/* ---------- Hero entrance ---------- */
 @keyframes hero-rise {
   from {
     opacity: 0;
@@ -119,23 +128,28 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
   .hero-rise {
-    animation: none;
     opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
   }
 }
 
 /* ---------- Focus visibility (a11y) ---------- */
 :focus-visible {
-  outline: 2px solid var(--color-gold-500);
+  outline: 2px solid var(--color-coral-500);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
-/* Thin gold scrollbar accent on supporting browsers */
 @supports (scrollbar-color: auto) {
   * {
-    scrollbar-color: var(--color-gold-400) transparent;
+    scrollbar-color: var(--color-coral-300) transparent;
     scrollbar-width: thin;
   }
 }

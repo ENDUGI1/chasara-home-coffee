@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Home, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import { RoofMark } from './Logo'
 
 const links = [
   { to: '/', label: 'Beranda', end: true },
@@ -23,12 +24,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Tutup menu mobile setiap pindah halaman.
   useEffect(() => {
     setOpen(false)
   }, [location])
 
-  // Kunci scroll body saat menu mobile terbuka.
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => {
@@ -37,7 +36,6 @@ export default function Navbar() {
   }, [open])
 
   const onHome = location.pathname === '/'
-  // Di beranda, navbar mengambang transparan di atas hero; setelah scroll jadi solid.
   const solid = scrolled || !onHome
 
   return (
@@ -49,31 +47,30 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
-        {/* Logo */}
         <Link
           to="/"
-          className="group flex items-center gap-2"
+          className="flex items-center gap-2.5"
           aria-label="Chasara Home & Coffee — beranda"
         >
-          <span
-            className={`grid h-9 w-9 place-items-center rounded-full border transition-colors ${
-              solid
-                ? 'border-forest-800/20 bg-forest-800 text-gold-400'
-                : 'border-white/30 bg-white/10 text-gold-400 backdrop-blur'
-            }`}
-          >
-            <Home className="h-4 w-4" strokeWidth={2} />
-          </span>
-          <span
-            className={`font-display text-xl leading-none tracking-tight transition-colors ${
-              solid ? 'text-forest-800' : 'text-cream-50'
-            }`}
-          >
-            Chasara
+          <RoofMark size={38} tone={solid ? 'solid' : 'outline'} />
+          <span className="flex flex-col leading-none">
+            <span
+              className={`font-display text-xl tracking-tight transition-colors ${
+                solid ? 'text-teal-800' : 'text-cream-50'
+              }`}
+            >
+              Chasara
+            </span>
+            <span
+              className={`text-[10px] font-medium uppercase tracking-[0.25em] transition-colors ${
+                solid ? 'text-coral-600' : 'text-cream-100/80'
+              }`}
+            >
+              Home &amp; Coffee
+            </span>
           </span>
         </Link>
 
-        {/* Desktop links */}
         <ul className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
             <li key={l.to}>
@@ -81,11 +78,11 @@ export default function Navbar() {
                 to={l.to}
                 end={l.end}
                 className={({ isActive }) =>
-                  `relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                  `rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                     solid
                       ? isActive
-                        ? 'text-forest-800'
-                        : 'text-ink-soft hover:text-forest-800'
+                        ? 'text-coral-600'
+                        : 'text-ink-soft hover:text-teal-700'
                       : isActive
                         ? 'text-white'
                         : 'text-cream-100/90 hover:text-white'
@@ -101,18 +98,17 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             to="/reservasi"
-            className="hidden rounded-full bg-forest-800 px-5 py-2.5 text-sm font-semibold text-cream-50 shadow-sm transition hover:bg-forest-700 active:translate-y-px sm:inline-flex"
+            className="hidden rounded-full bg-coral-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-coral-600 active:translate-y-px sm:inline-flex"
           >
             Pesan Kamar
           </Link>
 
-          {/* Hamburger */}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Tutup menu' : 'Buka menu'}
             aria-expanded={open}
             className={`grid h-10 w-10 place-items-center rounded-full transition lg:hidden ${
-              solid ? 'text-forest-800 hover:bg-cream-100' : 'text-cream-50 hover:bg-white/10'
+              solid ? 'text-teal-800 hover:bg-cream-100' : 'text-cream-50 hover:bg-white/10'
             }`}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -120,7 +116,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile panel */}
       <div
         className={`overflow-hidden border-t border-cream-200 bg-cream-50 transition-[max-height,opacity] duration-500 ease-out lg:hidden ${
           open ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
@@ -135,7 +130,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `block rounded-xl px-4 py-3 text-base font-medium transition ${
                     isActive
-                      ? 'bg-forest-800/5 text-forest-800'
+                      ? 'bg-coral-50 text-coral-600'
                       : 'text-ink-soft hover:bg-cream-100'
                   }`
                 }
@@ -147,7 +142,7 @@ export default function Navbar() {
           <li className="pt-2">
             <Link
               to="/reservasi"
-              className="block rounded-xl bg-forest-800 px-4 py-3 text-center text-base font-semibold text-cream-50"
+              className="block rounded-xl bg-coral-500 px-4 py-3 text-center text-base font-semibold text-white"
             >
               Pesan Kamar
             </Link>

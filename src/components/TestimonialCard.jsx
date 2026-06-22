@@ -10,9 +10,7 @@ export default function TestimonialCard({ name, role, quote, rating = 5 }) {
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
-            className={`h-4 w-4 ${
-              i < rating ? 'fill-gold-400 text-gold-400' : 'text-cream-200'
-            }`}
+            className={`h-4 w-4 ${i < rating ? 'fill-coral-400 text-coral-400' : 'text-cream-200'}`}
             strokeWidth={1.5}
           />
         ))}
@@ -21,7 +19,7 @@ export default function TestimonialCard({ name, role, quote, rating = 5 }) {
         “{quote}”
       </blockquote>
       <figcaption className="mt-5 border-t border-cream-200 pt-4">
-        <p className="font-semibold text-forest-800">{name}</p>
+        <p className="font-semibold text-teal-800">{name}</p>
         <p className="text-sm text-ink-soft">{role}</p>
       </figcaption>
     </figure>

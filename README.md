@@ -79,19 +79,21 @@ Untuk juga menyimpan booking ke database:
 
 ---
 
-## ⚙️ Hal yang perlu diganti (cari `TODO` di kode)
+## ⚙️ Data & konten
 
-| Item                | Lokasi                                  |
-| ------------------- | --------------------------------------- |
-| Nomor WhatsApp      | `src/data/siteConfig.js` (`WHATSAPP_NUMBER`) |
-| Alamat & Instagram  | `src/data/siteConfig.js` (`SITE`)       |
-| Foto kamar          | `src/data/rooms.js` (`image`)           |
-| Foto hero & lainnya | `src/pages/Home.jsx` (placehold.co)     |
-| Koordinat Maps      | `src/pages/Kontak.jsx`                   |
-| Menu & harga coffee | `src/data/menu.js`                      |
+Semua data sudah memakai info resmi client Chasara:
 
-Semua foto saat ini memakai placeholder [placehold.co](https://placehold.co) berwarna
-brand. Cari komentar `{/* TODO: Replace with actual photo */}` untuk menggantinya.
+| Item | Lokasi | Status |
+| --- | --- | --- |
+| Kontak, alamat, IG, jam, aturan | `src/data/siteConfig.js` | ✅ data asli |
+| Kamar (Deluxe Room) | `src/data/rooms.js` | ✅ data asli |
+| Menu Chasara Coffee | `src/data/menu.js` | ✅ data asli |
+| Foto kamar & menu | `public/images/` | ✅ foto asli |
+| Koordinat Google Maps | `src/pages/Kontak.jsx` | ⚠️ pakai pencarian alamat (`Jl. Kampung Pinisi, Klandasan`). Ganti dengan pin lokasi presisi bila perlu. |
+
+**Brand:** palet coral + sage + teal + krem (dari logo & poster resmi Chasara),
+font Playfair Display + Plus Jakarta Sans + Caveat (tagline). Token warna ada di
+`src/index.css` (`@theme`).
 
 ---
 

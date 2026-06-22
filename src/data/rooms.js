@@ -1,56 +1,36 @@
-import { unsplash } from './siteConfig'
-
-// Data kamar Chasara Home (dummy — ganti dengan data asli bila tersedia).
+// Data kamar Chasara Home (data resmi client).
+// Saat ini hanya tersedia 1 tipe kamar: Deluxe Room.
 export const rooms = [
   {
     id: 1,
-    name: 'Kamar Standar',
-    price: 250000,
-    capacity: 2,
-    available: true,
-    facilities: ['AC', 'WiFi', 'TV', 'Kamar Mandi Dalam', 'Air Panas'],
-    description: 'Nyaman dan lengkap untuk kebutuhan menginap harian.',
-    // TODO: Replace with actual photo (stok Unsplash sementara)
-    image: unsplash('photo-1566073771259-6a8506099945', 800, 500),
-  },
-  {
-    id: 2,
-    name: 'Kamar Deluxe',
-    price: 350000,
+    name: 'Deluxe Room',
+    price: 300000,
     capacity: 2,
     available: true,
     facilities: [
+      'Double Bed',
       'AC',
-      'WiFi',
-      'TV 32"',
-      'Kamar Mandi Dalam',
-      'Air Panas',
-      'Meja Kerja',
-      'Kulkas Mini',
+      'Water Heater',
+      'Kulkas',
+      'TV',
+      'Lemari',
+      'Dispenser Umum',
+      'Amenities',
     ],
-    description: 'Lebih luas dengan meja kerja, cocok untuk tamu bisnis.',
-    // TODO: Replace with actual photo (stok Unsplash sementara)
-    image: unsplash('photo-1611892440504-42a792e24d32', 800, 500),
+    description:
+      'Kamar nyaman dengan double bed, interior modern, dan pencahayaan hangat. Lengkap dengan kamar mandi dalam ber-water heater.',
+    image: '/images/room-01.jpeg',
   },
-  {
-    id: 3,
-    name: 'Kamar Family',
-    price: 450000,
-    capacity: 4,
-    available: false,
-    facilities: [
-      'AC',
-      'WiFi',
-      'TV 40"',
-      'Kamar Mandi Dalam',
-      'Air Panas',
-      '2 Kasur',
-      'Sofa',
-    ],
-    description: 'Luas dengan 2 kasur, ideal untuk keluarga.',
-    // TODO: Replace with actual photo (stok Unsplash sementara)
-    image: unsplash('photo-1582719478250-c89cae4dc85b', 800, 500),
-  },
+]
+
+// Galeri foto kamar untuk halaman Kamar.
+export const roomGallery = [
+  { src: '/images/room-01.jpeg', alt: 'Kamar Deluxe Chasara Home — tempat tidur & lukisan' },
+  { src: '/images/room-04.jpeg', alt: 'Area TV & meja kamar Deluxe' },
+  { src: '/images/room-02.jpeg', alt: 'Suasana kamar Deluxe dengan pencahayaan hangat' },
+  { src: '/images/room-07.jpeg', alt: 'Meja, kulkas mini & lemari kamar Deluxe' },
+  { src: '/images/bath-01.jpeg', alt: 'Kamar mandi dalam dengan shower & water heater' },
+  { src: '/images/bath-02.jpeg', alt: 'Wastafel & cermin kamar mandi' },
 ]
 
 export const getRoomById = (id) => rooms.find((r) => r.id === Number(id))

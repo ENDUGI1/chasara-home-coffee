@@ -17,9 +17,9 @@ export default function Toast({ message, onClose }) {
     <div
       role="status"
       aria-live="polite"
-      className="fixed bottom-6 left-1/2 z-[100] flex w-[calc(100%-2rem)] max-w-md -translate-x-1/2 items-start gap-3 rounded-2xl border border-forest-700/20 bg-forest-800 px-5 py-4 text-cream-50 shadow-2xl shadow-forest-900/30"
+      className="fixed bottom-6 left-1/2 z-[100] flex w-[calc(100%-2rem)] max-w-md -translate-x-1/2 items-start gap-3 rounded-2xl border border-teal-700/30 bg-teal-800 px-5 py-4 text-cream-50 shadow-2xl shadow-teal-900/30"
     >
-      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold-400" strokeWidth={2} />
+      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-coral-300" strokeWidth={2} />
       <p className="flex-1 text-sm leading-relaxed">{message}</p>
       <button
         onClick={onClose}

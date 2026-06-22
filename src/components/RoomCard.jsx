@@ -6,14 +6,10 @@ function AvailabilityBadge({ available }) {
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold backdrop-blur ${
-        available
-          ? 'bg-forest-800/85 text-cream-50'
-          : 'bg-coffee-900/85 text-cream-100'
+        available ? 'bg-teal-800/85 text-cream-50' : 'bg-charcoal-900/85 text-cream-100'
       }`}
     >
-      <span
-        className={`h-1.5 w-1.5 rounded-full ${available ? 'bg-gold-400' : 'bg-cream-200'}`}
-      />
+      <span className={`h-1.5 w-1.5 rounded-full ${available ? 'bg-coral-400' : 'bg-cream-200'}`} />
       {available ? 'Tersedia' : 'Penuh'}
     </span>
   )
@@ -27,9 +23,8 @@ function AvailabilityBadge({ available }) {
 export default function RoomCard({ room, variant = 'preview' }) {
   if (variant === 'full') {
     return (
-      <article className="group grid overflow-hidden rounded-3xl border border-cream-200 bg-white shadow-sm transition-shadow duration-500 hover:shadow-xl hover:shadow-forest-900/5 md:grid-cols-2">
-        <div className="relative aspect-[16/9] overflow-hidden md:aspect-auto">
-          {/* TODO: Replace with actual photo */}
+      <article className="group grid overflow-hidden rounded-3xl border border-cream-200 bg-white shadow-sm transition-shadow duration-500 hover:shadow-xl hover:shadow-teal-900/5 md:grid-cols-2">
+        <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto">
           <img
             src={room.image}
             alt={`Foto ${room.name} Chasara Home`}
@@ -43,16 +38,16 @@ export default function RoomCard({ room, variant = 'preview' }) {
 
         <div className="flex flex-col p-7 lg:p-9">
           <div className="flex items-center gap-2 text-sm text-ink-soft">
-            <Users className="h-4 w-4 text-gold-500" />
+            <Users className="h-4 w-4 text-coral-500" />
             <span>Maks. {room.capacity} tamu</span>
           </div>
-          <h3 className="mt-2 text-2xl text-forest-800 lg:text-3xl">{room.name}</h3>
+          <h3 className="mt-2 text-2xl text-teal-800 lg:text-3xl">{room.name}</h3>
           <p className="mt-2 text-ink-soft">{room.description}</p>
 
           <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2.5">
             {room.facilities.map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-ink">
-                <Check className="h-4 w-4 shrink-0 text-forest-600" strokeWidth={2.5} />
+                <Check className="h-4 w-4 shrink-0 text-sage-600" strokeWidth={2.5} />
                 {f}
               </li>
             ))}
@@ -60,14 +55,12 @@ export default function RoomCard({ room, variant = 'preview' }) {
 
           <div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-7">
             <p className="leading-none">
-              <span className="text-2xl font-bold text-forest-800">
-                {formatRupiah(room.price)}
-              </span>
+              <span className="text-2xl font-bold text-teal-800">{formatRupiah(room.price)}</span>
               <span className="text-sm text-ink-soft"> / malam</span>
             </p>
             <Link
               to={`/reservasi?kamar=${room.id}`}
-              className="inline-flex rounded-full bg-forest-800 px-6 py-3 text-sm font-semibold text-cream-50 transition hover:bg-forest-700 active:translate-y-px"
+              className="inline-flex rounded-full bg-coral-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-coral-600 active:translate-y-px"
             >
               Pesan Kamar Ini
             </Link>
@@ -77,11 +70,9 @@ export default function RoomCard({ room, variant = 'preview' }) {
     )
   }
 
-  // variant="preview"
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-cream-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-forest-900/5">
+    <article className="group flex flex-col overflow-hidden rounded-3xl border border-cream-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-900/5">
       <div className="relative aspect-[16/10] overflow-hidden">
-        {/* TODO: Replace with actual photo */}
         <img
           src={room.image}
           alt={`Foto ${room.name} Chasara Home`}
@@ -95,22 +86,20 @@ export default function RoomCard({ room, variant = 'preview' }) {
 
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-2 text-xs text-ink-soft">
-          <Users className="h-3.5 w-3.5 text-gold-500" />
+          <Users className="h-3.5 w-3.5 text-coral-500" />
           <span>Maks. {room.capacity} tamu</span>
         </div>
-        <h3 className="mt-1.5 text-xl text-forest-800">{room.name}</h3>
+        <h3 className="mt-1.5 text-xl text-teal-800">{room.name}</h3>
         <p className="mt-2 line-clamp-2 text-sm text-ink-soft">{room.description}</p>
 
         <div className="mt-5 flex items-end justify-between pt-1">
           <p className="leading-none">
-            <span className="text-xl font-bold text-forest-800">
-              {formatRupiah(room.price)}
-            </span>
+            <span className="text-xl font-bold text-teal-800">{formatRupiah(room.price)}</span>
             <span className="text-xs text-ink-soft"> / malam</span>
           </p>
           <Link
             to={`/reservasi?kamar=${room.id}`}
-            className="text-sm font-semibold text-forest-700 underline-offset-4 transition hover:text-gold-600 hover:underline"
+            className="text-sm font-semibold text-coral-600 underline-offset-4 transition hover:underline"
           >
             Pesan →
           </Link>

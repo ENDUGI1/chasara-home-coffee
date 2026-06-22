@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#2C3E2D" />
-  <path
-    d="M16 7l8 6.5V25a1 1 0 0 1-1 1h-4v-6h-6v6H9a1 1 0 0 1-1-1V13.5L16 7z"
-    fill="none"
-    stroke="#C8A96E"
-    stroke-width="2"
-    stroke-linejoin="round"
-  />
+  <rect width="32" height="32" rx="8" fill="#234c54" />
+  <!-- Atap chasara (chevron) -->
+  <path d="M7 17.5 16 10l9 7.5" fill="none" stroke="#57a1ad" stroke-width="2.4"
+    stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M11.5 14.2 16 10.6l1.6 1.3-4.5 3.6z" fill="#57a1ad" />
 </svg>
